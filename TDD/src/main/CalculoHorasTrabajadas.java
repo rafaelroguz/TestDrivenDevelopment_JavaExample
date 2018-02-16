@@ -49,14 +49,60 @@ public class CalculoHorasTrabajadas {
         return horasAPagar;
     }
 
-    public float calcularHorasAPagarTurnoNocturno(float horas) {
-        float horasAPagar = 100;
+    public float calcularHorasAPagarTurnoNocturno(float horasTrabajadas) {
+        float horasActualesTrabajadas = horasTrabajadas;
+        float horasAPagar = 0;
+
+        //Cantidade horas obligatorias a cumplir en el turno
+        final float HORAS_NORMALES_OBLIGATORIAS = 42;
+
+        //Cantidad de horas máxima que se pueden laborar al cubrir el máximo de horas dobles
+        final float MAXIMO_HORAS_DOBLES = 51;
+
+
+        if ( (horasActualesTrabajadas >= 0) && (horasActualesTrabajadas <= HORAS_NORMALES_OBLIGATORIAS) ) {
+            horasAPagar = horasActualesTrabajadas;
+        }
+        else if( (horasActualesTrabajadas > HORAS_NORMALES_OBLIGATORIAS) && (horasActualesTrabajadas <= MAXIMO_HORAS_DOBLES) ) {
+            float horasDoblesTrabajadas = horasActualesTrabajadas - HORAS_NORMALES_OBLIGATORIAS;
+
+            horasAPagar = HORAS_NORMALES_OBLIGATORIAS + (2 * horasDoblesTrabajadas);
+        }
+        else if ( horasActualesTrabajadas > MAXIMO_HORAS_DOBLES) {
+            float horasTriplesTrabajadas = horasActualesTrabajadas - MAXIMO_HORAS_DOBLES;
+            float horasDoblesTrabajadas = MAXIMO_HORAS_DOBLES - HORAS_NORMALES_OBLIGATORIAS;
+
+            horasAPagar = HORAS_NORMALES_OBLIGATORIAS + (2 * horasDoblesTrabajadas) + (3 * horasTriplesTrabajadas);
+        }
 
         return horasAPagar;
     }
 
-    public float calcularHorasAPagarTurnoMixto(float horas) {
-        float horasAPagar = 100;
+    public float calcularHorasAPagarTurnoMixto(float horasTrabajadas) {
+        float horasActualesTrabajadas = horasTrabajadas;
+        float horasAPagar = 0;
+
+        //Cantidade horas obligatorias a cumplir en el turno
+        final float HORAS_NORMALES_OBLIGATORIAS = 45;
+
+        //Cantidad de horas máxima que se pueden laborar al cubrir el máximo de horas dobles
+        final float MAXIMO_HORAS_DOBLES = 54;
+
+
+        if ( (horasActualesTrabajadas >= 0) && (horasActualesTrabajadas <= HORAS_NORMALES_OBLIGATORIAS) ) {
+            horasAPagar = horasActualesTrabajadas;
+        }
+        else if( (horasActualesTrabajadas > HORAS_NORMALES_OBLIGATORIAS) && (horasActualesTrabajadas <= MAXIMO_HORAS_DOBLES) ) {
+            float horasDoblesTrabajadas = horasActualesTrabajadas - HORAS_NORMALES_OBLIGATORIAS;
+
+            horasAPagar = HORAS_NORMALES_OBLIGATORIAS + (2 * horasDoblesTrabajadas);
+        }
+        else if ( horasActualesTrabajadas > MAXIMO_HORAS_DOBLES) {
+            float horasTriplesTrabajadas = horasActualesTrabajadas - MAXIMO_HORAS_DOBLES;
+            float horasDoblesTrabajadas = MAXIMO_HORAS_DOBLES - HORAS_NORMALES_OBLIGATORIAS;
+
+            horasAPagar = HORAS_NORMALES_OBLIGATORIAS + (2 * horasDoblesTrabajadas) + (3 * horasTriplesTrabajadas);
+        }
 
         return horasAPagar;
     }
